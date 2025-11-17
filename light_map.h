@@ -23,14 +23,14 @@ namespace lmap
         {
 #ifdef PLATFORM_32
             uint32_t key{}, value{};
-            memcpy(&value, &value_, 4);
-            memcpy(&key, &key_, 4);
+            memcpy(&value, &value_, sizeof(T2));
+            memcpy(&key, &key_, sizeof(T2));
 
             _value = (static_cast<uint64_t>(key) << 32) | value;
 #elif PLATFORM_64
             uint64_t key{}, value{};
-            memcpy(&value, &value_, 4);
-            memcpy(&key, &key_, 4);
+            memcpy(&value, &value_, sizeof(T2));
+            memcpy(&key, &key_, sizeof(T2));
 
             _value = (static_cast<__int128>(key) << 64) | value;
 #endif
